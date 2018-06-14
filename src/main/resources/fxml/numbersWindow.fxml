@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import org.tbee.javafx.scene.layout.fxml.MigPane?>
+
+<MigPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" 
+         styleClass="main-panel" xmlns:fx="http://javafx.com/fxml/1" 
+         fx:controller="com.shm.rdozerfx.NumbersWindowController"
+         layout="insets 20"
+         cols="[label, pref!][grow, 50::]"
+         rows="">
+    <stylesheets>
+        <URL value="@/styles/styles.css"/>
+    </stylesheets>
+    <Label text="Enter first number:" /> 
+    <TextField fx:id="firstNumberField" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Label text="Enter second number:" /> 
+    <TextField fx:id="endNumberField" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Label text="Number generations:" /> 
+    <TextField fx:id="numGensField" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Label text="Unique numbers:" /> <CheckBox fx:id="isUniqNums" MigPane.cc="gap :push, wrap" />
+    
+    <Button text="Generate" onAction="#generate" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Button text="TextGen" fx:id="textgen" onAction="#handleButtonAction" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
+    <Label text="Output:" styleClass="output-message" MigPane.cc="span, growx" />
+    <Label fx:id="outputLabel" styleClass="hello-message" MigPane.cc="span, growx" />
+</MigPane>

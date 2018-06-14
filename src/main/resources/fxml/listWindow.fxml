@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import org.tbee.javafx.scene.layout.fxml.MigPane?>
+
+<MigPane id="rootPane" fx:controller="com.shm.rdozerfx.ListWindowController"
+        styleClass="main-panel" 
+        layout="insets 20"
+        cols="[label, pref!][grow, 50::]"
+        rows="[] 15 []"
+        xmlns:fx="http://javafx.com/fxml">
+
+    <Label text="Text to random:" /> <TextField fx:id="textField" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Button text="Add" onAction="#textList" /> <Button text="Generate" onAction="#generate" MigPane.cc="gap :push, wrap" />
+    <ComboBox fx:id="textList" MigPane.cc="span, gaptop 15" /> 
+    <Button text="Clear" onAction="#remove" />
+    <Button text="NumberGen" onAction="#handleButtonToNumberGen" fx:id="numbergen" MigPane.cc="gap :push, wrap" />
+    <Label text="Output:" styleClass="output-message" MigPane.cc="span, growx" />
+    <Label fx:id="messageLabel" styleClass="hello-message" MigPane.cc="span, growx" />
+
+</MigPane >

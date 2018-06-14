@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="rdozerfx" default="all">
+  
+  
+  <property file="rdozerfx.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.maven:_com.miglayout:miglayout-core:4.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/miglayout/miglayout-core/4.2/miglayout-core-4.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.miglayout:miglayout-javafx:4.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/miglayout/miglayout-javafx/4.2/miglayout-javafx-4.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-lang:commons-lang:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module RdozerFx -->
+  
+  <dirname property="module.rdozerfx.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.rdozerfx" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.rdozerfx" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.rdozerfx" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.rdozerfx" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="rdozerfx.output.dir" value="${module.rdozerfx.basedir}/target/classes"/>
+  <property name="rdozerfx.testoutput.dir" value="${module.rdozerfx.basedir}/target/test-classes"/>
+  
+  <path id="rdozerfx.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="rdozerfx.module.production.classpath">
+    <path refid="${module.jdk.classpath.rdozerfx}"/>
+    <path refid="library.maven:_com.miglayout:miglayout-javafx:4.2.classpath"/>
+    <path refid="library.maven:_com.miglayout:miglayout-core:4.2.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+  </path>
+  
+  <path id="rdozerfx.runtime.production.module.classpath">
+    <pathelement location="${rdozerfx.output.dir}"/>
+    <path refid="library.maven:_com.miglayout:miglayout-javafx:4.2.classpath"/>
+    <path refid="library.maven:_com.miglayout:miglayout-core:4.2.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+  </path>
+  
+  <path id="rdozerfx.module.classpath">
+    <path refid="${module.jdk.classpath.rdozerfx}"/>
+    <pathelement location="${rdozerfx.output.dir}"/>
+    <path refid="library.maven:_com.miglayout:miglayout-javafx:4.2.classpath"/>
+    <path refid="library.maven:_com.miglayout:miglayout-core:4.2.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+  </path>
+  
+  <path id="rdozerfx.runtime.module.classpath">
+    <pathelement location="${rdozerfx.testoutput.dir}"/>
+    <pathelement location="${rdozerfx.output.dir}"/>
+    <path refid="library.maven:_com.miglayout:miglayout-javafx:4.2.classpath"/>
+    <path refid="library.maven:_com.miglayout:miglayout-core:4.2.classpath"/>
+    <path refid="library.maven:_commons-lang:commons-lang:2.6.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.rdozerfx">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.rdozerfx">
+    <patternset refid="excluded.from.module.rdozerfx"/>
+  </patternset>
+  
+  <path id="rdozerfx.module.sourcepath">
+    <dirset dir="${module.rdozerfx.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="rdozerfx.module.test.sourcepath">
+    <dirset dir="${module.rdozerfx.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.rdozerfx" depends="compile.module.rdozerfx.production,compile.module.rdozerfx.tests" description="Compile module RdozerFx"/>
+  
+  <target name="compile.module.rdozerfx.production" depends="register.custom.compilers" description="Compile module RdozerFx; production classes">
+    <mkdir dir="${rdozerfx.output.dir}"/>
+    <javac2 destdir="${rdozerfx.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.rdozerfx}/javac">
+      <compilerarg line="${compiler.args.rdozerfx}"/>
+      <bootclasspath refid="rdozerfx.module.bootclasspath"/>
+      <classpath refid="rdozerfx.module.production.classpath"/>
+      <src refid="rdozerfx.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.rdozerfx"/>
+    </javac2>
+    
+    <copy todir="${rdozerfx.output.dir}">
+      <fileset dir="${module.rdozerfx.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.rdozerfx.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.rdozerfx.tests" depends="register.custom.compilers,compile.module.rdozerfx.production" description="compile module RdozerFx; test classes" unless="skip.tests">
+    <mkdir dir="${rdozerfx.testoutput.dir}"/>
+    <javac2 destdir="${rdozerfx.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.rdozerfx}/javac">
+      <compilerarg line="${compiler.args.rdozerfx}"/>
+      <bootclasspath refid="rdozerfx.module.bootclasspath"/>
+      <classpath refid="rdozerfx.module.classpath"/>
+      <src refid="rdozerfx.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.rdozerfx"/>
+    </javac2>
+    
+    <copy todir="${rdozerfx.testoutput.dir}">
+      <fileset dir="${module.rdozerfx.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.rdozerfx" description="cleanup module">
+    <delete dir="${rdozerfx.output.dir}"/>
+    <delete dir="${rdozerfx.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.rdozerfx" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.rdozerfx" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
