@@ -85,6 +85,8 @@ public class NumbersWindowController implements Initializable {
             for (int x = 0; x < count; x++) {
                     max -= min;
                     r = (int) (Math.random() * ++max) + min;
+                    --max;
+                    max += min;
                     if (cg <= tc && uniq && count - 1 <= tc) {
                         while (list.contains(r)) {
                             max -= min;
