@@ -37,10 +37,22 @@ public class ListWindowController
         stage.show();
     }
     
+    @FXML
+    public void onEnter(ActionEvent ae){
+       if (!textField.getText().isEmpty()){
+            textList.getItems().add(textField.getText());
+            textList.getSelectionModel().selectLast();
+            textField.clear();
+            textField.positionCaret( 0 );
+        } else {messageLabel.setText("Empty field, type something.");}
+    }
+    
     public void textList() {
         if (!textField.getText().isEmpty()){
             textList.getItems().add(textField.getText());
             textList.getSelectionModel().selectLast();
+            textField.clear();
+            textField.positionCaret( 0 );
         } else {messageLabel.setText("Empty field, type something.");}
     }
     

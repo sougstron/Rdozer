@@ -12,11 +12,11 @@
         rows="[] 15 []"
         xmlns:fx="http://javafx.com/fxml">
 
-    <Label text="Text to random:" /> <TextField fx:id="textField" prefColumnCount="30" MigPane.cc="growx, wrap" />
-    <Button text="Add" onAction="#textList" /> <Button text="Generate" onAction="#generate" MigPane.cc="gap :push, wrap" />
-    <ComboBox fx:id="textList" MigPane.cc="span, gaptop 15" /> 
-    <Button text="Clear" onAction="#remove" />
-    <Button text="NumberGen" onAction="#handleButtonToNumberGen" fx:id="numbergen" MigPane.cc="gap :push, wrap" />
+    <Label text="Text to random:" /> <TextField fx:id="textField" onAction="#onEnter" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Button text="Add" prefHeight="30" prefWidth="100" onAction="#textList" /> <Button text="Generate" prefHeight="30" prefWidth="100" onAction="#generate" MigPane.cc="gap :push, wrap" />
+    <ComboBox fx:id="textList" prefHeight="30" prefWidth="250" MigPane.cc="span, gaptop 15, growx" /> 
+    <Button text="Clear" prefHeight="30" prefWidth="100" onAction="#remove" />
+    <Button text="NumberGen" prefHeight="30" prefWidth="100" onAction="#handleButtonToNumberGen" fx:id="numbergen" MigPane.cc="gap :push, wrap" />
     <Label text="Output:" styleClass="output-message" MigPane.cc="span, growx" />
     <Label fx:id="messageLabel" styleClass="hello-message" MigPane.cc="span, growx" />
 

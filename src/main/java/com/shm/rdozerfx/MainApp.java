@@ -1,16 +1,11 @@
 package com.shm.rdozerfx;
 
-import javafx.geometry.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.Reflection;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.tbee.javafx.scene.layout.MigPane;
 
 
 public class MainApp extends Application {
