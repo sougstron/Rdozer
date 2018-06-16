@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import org.tbee.javafx.scene.layout.fxml.MigPane?>
+
+<MigPane id="UnEqPane" prefHeight="400.0" prefWidth="600.0" 
+         styleClass="main-panel" xmlns:fx="http://javafx.com/fxml/1" 
+         fx:controller="com.shm.rdozerfx.UnEqualWindowController"
+         layout="insets 20"
+         cols="[label, pref!][grow, 50::]"
+         rows="[] 15 []">
+    <Label text="Definition:" /> 
+    <TextField fx:id="definition" prefWidth="190" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Label text="Chance percent:" /> 
+    <TextField fx:id="chancePercent" prefWidth="190" prefColumnCount="30" MigPane.cc="growx, wrap" />
+    <Button text="Add" prefHeight="30" prefWidth="100" onAction="#defList" /> <Button text="Generate" prefHeight="30" prefWidth="100" onAction="#generate" MigPane.cc="gap :push, wrap" />
+    <ComboBox fx:id="defList" prefHeight="30" prefWidth="250" MigPane.cc="span, gaptop 15, growx, wrap" /> 
+    <Button text="Remove" prefHeight="30" prefWidth="100" onAction="#remove" />
+    <Button text="Clear" prefHeight="30" prefWidth="100" onAction="#clear" MigPane.cc="gap :push, wrap" />
+    <Label text="Output:" styleClass="output-message" />
+    <Label fx:id="outputLabel" styleClass="hello-message" MigPane.cc="growx, wrap" />
+    <Button text="NumberGen" prefHeight="30" prefWidth="100" fx:id="numGen" onAction="#handleButtonActionNums" />
+    <Button text="TextGen" prefHeight="30" prefWidth="100" fx:id="textGen" onAction="#handleButtonActionText" MigPane.cc="gap :push" />
+</MigPane>

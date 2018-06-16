@@ -24,9 +24,9 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader();
         Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         
-        Scene scene = new Scene(rootNode, 300, 300);
+        Scene scene = new Scene(rootNode, 350, 400);
         scene.getStylesheets().add("/styles/styles.css");
-
+        
         //Animation and graphics
         rootNode.setEffect(new Reflection());
         

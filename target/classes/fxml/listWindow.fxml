@@ -15,9 +15,11 @@
     <Label text="Text to random:" /> <TextField fx:id="textField" onAction="#onEnter" prefColumnCount="30" MigPane.cc="growx, wrap" />
     <Button text="Add" prefHeight="30" prefWidth="100" onAction="#textList" /> <Button text="Generate" prefHeight="30" prefWidth="100" onAction="#generate" MigPane.cc="gap :push, wrap" />
     <ComboBox fx:id="textList" prefHeight="30" prefWidth="250" MigPane.cc="span, gaptop 15, growx" /> 
-    <Button text="Clear" prefHeight="30" prefWidth="100" onAction="#remove" />
-    <Button text="NumberGen" prefHeight="30" prefWidth="100" onAction="#handleButtonToNumberGen" fx:id="numbergen" MigPane.cc="gap :push, wrap" />
+    <Button text="Remove" prefHeight="30" prefWidth="100" onAction="#remove" />
+    <Button text="Clear" prefHeight="30" prefWidth="100" onAction="#clear" MigPane.cc="gap :push, wrap" />
     <Label text="Output:" styleClass="output-message" MigPane.cc="span, growx" />
-    <Label fx:id="messageLabel" styleClass="hello-message" MigPane.cc="span, growx" />
+    <Label fx:id="messageLabel" styleClass="hello-message" MigPane.cc="span, growx, wrap" />
+    <Button text="UnEqualGen" prefHeight="30" prefWidth="100" onAction="#handleButtonToUnEqGen" fx:id="unEqGen" />
+    <Button text="NumberGen" prefHeight="30" prefWidth="100" onAction="#handleButtonToNumberGen" fx:id="numberGen" MigPane.cc="gap :push" />
 
 </MigPane >

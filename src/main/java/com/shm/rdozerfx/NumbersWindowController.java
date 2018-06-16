@@ -36,7 +36,7 @@ public class NumbersWindowController implements Initializable {
     }  
     
     @FXML private javafx.scene.control.Button textgen;
-    @FXML public void handleButtonAction(ActionEvent event) throws IOException {
+    @FXML public void handleButtonActionText(ActionEvent event) throws IOException {
         //Close current
         Stage stage = (Stage) textgen.getScene().getWindow();
         // do what you have to do
@@ -44,13 +44,32 @@ public class NumbersWindowController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/listWindow.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
-        Scene scene = new Scene(root1, 300, 300);
+        Scene scene = new Scene(root1, 350, 400);
         scene.getStylesheets().add("/styles/styles.css");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Rdozer");
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML private javafx.scene.control.Button unEqGen;
+    @FXML public void handleButtonActionUnEq(ActionEvent event) throws IOException {
+        //Close current
+        Stage stage = (Stage) unEqGen.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/unEqualWindow.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
+        Scene scene = new Scene(root1, 350, 400);
+        scene.getStylesheets().add("/styles/styles.css");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Rdozer");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    
     
     public void generate(){
         try {

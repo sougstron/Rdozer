@@ -12,10 +12,7 @@
          fx:controller="com.shm.rdozerfx.NumbersWindowController"
          layout="insets 20"
          cols="[label, pref!][grow, 50::]"
-         rows="">
-    <stylesheets>
-        <URL value="@/styles/styles.css"/>
-    </stylesheets>
+         rows="[] 15 []">
     <Label text="Enter first number:" /> 
     <TextField fx:id="firstNumberField" prefColumnCount="30" MigPane.cc="growx, wrap" />
     <Label text="Enter second number:" /> 
@@ -23,9 +20,10 @@
     <Label text="Number generations:" /> 
     <TextField fx:id="numGensField" prefColumnCount="30" MigPane.cc="growx, wrap" />
     <Label text="Unique numbers:" prefHeight="30" /> <CheckBox fx:id="isUniqNums" MigPane.cc="gap :push, wrap" />
-    
+   
     <Button text="Generate" prefHeight="30" prefWidth="100" onAction="#generate" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
-    <Button text="TextGen" prefHeight="30" prefWidth="100" fx:id="textgen" onAction="#handleButtonAction" MigPane.cc="skip, gap :push, gaptop 15, wrap" />
-    <Label text="Output:" styleClass="output-message" MigPane.cc="span, growx" />
-    <Label fx:id="outputLabel" styleClass="hello-message" MigPane.cc="span, growx" />
+    <Label text="Output:" styleClass="output-message" />
+    <Label fx:id="outputLabel" styleClass="hello-message" MigPane.cc="growx, wrap" />
+    <Button text="TextGen" prefHeight="30" prefWidth="100" fx:id="textgen" onAction="#handleButtonActionText" />
+    <Button text="UnEqualGen" prefHeight="30" prefWidth="100" fx:id="unEqGen" onAction="#handleButtonActionUnEq" MigPane.cc="gap :push" />
 </MigPane>

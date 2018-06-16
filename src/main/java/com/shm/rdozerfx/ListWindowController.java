@@ -20,16 +20,33 @@ public class ListWindowController
     @FXML private TextField textField;
     @FXML private Label messageLabel;
     @FXML private ComboBox textList;
-    @FXML private javafx.scene.control.Button numbergen;
+    @FXML private javafx.scene.control.Button numberGen;
     @FXML public void handleButtonToNumberGen(ActionEvent event) throws IOException {
         //Close current
-        Stage stage = (Stage) numbergen.getScene().getWindow();
+        Stage stage = (Stage) numberGen.getScene().getWindow();
         // do what you have to do
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/numbersWindow.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage = new Stage();
-        Scene scene = new Scene(root1, 300, 300);
+        Scene scene = new Scene(root1, 350, 400);
+        scene.getStylesheets().add("/styles/styles.css");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Rdozer");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    @FXML private javafx.scene.control.Button unEqGen;
+    @FXML public void handleButtonToUnEqGen(ActionEvent event) throws IOException {
+        //Close current
+        Stage stage = (Stage) unEqGen.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/unEqualWindow.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        stage = new Stage();
+        Scene scene = new Scene(root1, 350, 400);
         scene.getStylesheets().add("/styles/styles.css");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Rdozer");
@@ -74,11 +91,21 @@ public class ListWindowController
         } catch (IndexOutOfBoundsException e) {messageLabel.setText("Array bug.");}
     }
     
-    public void remove() {
+    public void clear() {
         if (!textList.getItems().isEmpty()){
             textList.setValue(null);
             textList.getItems().removeAll(textList.getItems());
         }
+    }
+    
+    
+    
+    public void remove() {
+            if (textList.getSelectionModel().getSelectedItem() != null){
+                String s = String.valueOf(textList.getSelectionModel().getSelectedItem());
+                textList.getItems().remove(textList.getSelectionModel().getSelectedItem());
+                textList.setValue(null);
+            }
     }
 
 }
